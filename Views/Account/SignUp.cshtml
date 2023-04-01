@@ -1,0 +1,69 @@
+﻿@model AssetManagementSystem.Models.ViewModel.SignupUserViewModel
+@{
+    ViewData["Title"] = "SignUp";
+    Layout = "~/Views/Shared/_Layout_Login.cshtml";
+}
+
+<html>
+<body>
+    <div class="container">
+        <div class="row mt-lg-5">
+            <div class="col-6 offset-3 border border-primary rounded pl-5 pr-5 pb-5 pt-5">
+                <div class="text-center">
+                    <h1 class="text-info">AMS Registration Form</h1>
+                </div>
+                <h5 class="text-danger text-center">@TempData["errormessage"]</h5>
+                <form method="post" asp-controller="Account" asp-action="SignUp">
+                    <div class="form-group">
+                        <label asp-for="Username">Full Name</label>
+                        <input type="text" asp-for="Username" placeholder="Enter Your Full Name" class="form-control" autocomplete="off" />
+                        <span asp-validation-for="Username" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Email"></label>
+                        <input type="text" asp-for="Email" placeholder="Enter Email" class="form-control" autocomplete="off" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Mobile"></label>
+                        <input type="text" asp-for="Mobile" placeholder="Enter Mobile" class="form-control" autocomplete="off" />
+                        <span asp-validation-for="Mobile" class="text-danger"></span>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label asp-for="Password"></label>
+                                <input type="password" asp-for="Password" placeholder="Enter Password" class="form-control" autocomplete="off" />
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label asp-for="ConfirmPassword"></label>
+                                <input type="password" asp-for="ConfirmPassword" placeholder="Confirm Password" class="form-control" autocomplete="off" />
+                                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-lg-left">
+                        <a class="text-light btn btn-primary font-weight-bold btn-lg mb-1 float-left" asp-action="Login" asp-controller="Account">Login</a>
+                    </div>
+                    <div class="text-lg-right">
+                        <button id="button" type="submit" name="submit" formmethod="post" class="text-light btn btn-primary font-weight-bold  btn-lg mb-1 float-Right">Sign Up</button>
+                    </div>
+                </form>
+                <div class="text-lg-center">
+                    @if (ViewBag.Error != null)
+                    {
+                        <span class="alert alert-danger mt-1 text-lg-center">@ViewBag.Error</span>
+                    }
+
+                    @if (ViewBag.Success != null)
+                    {
+                        <span class="alert alert-success mt-1 text-lg-center">@ViewBag.Success</span>
+                    }
+                </div>
+            </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+﻿
+@model AssetManagementSystem.Models.ViewModel.AssetCategoryViewModel
+@{
+    ViewData["Title"] = "AssetCategory";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+<div class="modal-content mt-3">
+    <div class="modal-header">
+        <div class="col-md-8">
+            <h3 id="titleBigModal" class="modal-title">Add Asset Category</h3>
+        </div>
+    </div>
+    <div class="modal-body" id="BigModalDiv">
+
+        <div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h5 class="text-danger text-center">@TempData["errormessage"]</h5>
+                    <form id="frmAssetCategorie" novalidate="novalidate">
+                        <div class="form-group">
+                            <label asp-for="AssetCategoryName">Category Name</label>
+                            <input type="text" asp-for="AssetCategoryName" placeholder="Enter Asset Category Name" class="form-control" autocomplete="off" />
+                            <span asp-validation-for="AssetCategoryName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="AssetCategoryDesc">Description</label>
+                            <input type="text" asp-for="AssetCategoryDesc" placeholder="Enter Asset Category Description" class="form-control" autocomplete="off" />
+                            <span asp-validation-for="AssetCategoryDesc" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <button id="button" type="submit" name="submit" formmethod="post" class="btn btn-info">Save</button>
+                        </div>
+                    </form>
+                    <div class="text-lg-center">
+                        @if (ViewBag.Error != null)
+                        {
+                            <span class="alert alert-danger mt-1 text-lg-center">@ViewBag.Error</span>
+                        }
+
+                        @if (ViewBag.Success != null)
+                        {
+                            <span class="alert alert-success mt-1 text-lg-center">@ViewBag.Success</span>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    </div>
+    <div class="modal-footer">
+    </div>
+</div>
+

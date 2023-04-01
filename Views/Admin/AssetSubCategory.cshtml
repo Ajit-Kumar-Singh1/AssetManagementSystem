@@ -1,0 +1,57 @@
+﻿
+@model AssetManagementSystem.Models.ViewModel.AssetSubCategoryViewModel
+@{
+    ViewData["Title"] = "AssetSubCategory";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+<div class="modal-content mt-3">
+    <div class="modal-header">
+        <div class="col-md-8">
+            <h3 id="titleBigModal" class="modal-title">Add Asset Sub Category Details</h3>
+        </div>
+    </div>
+    <div class="modal-body" id="BigModalDiv">
+        <div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h5 class="text-danger text-center">@TempData["errormessage"]</h5>
+                    <form id="frmAssetSubCategorie" novalidate="novalidate">
+                        <div class="form-group">
+                            <label asp-for="AssetSubCategoryName">Asset Category</label>
+                            <select asp-for="AssetCategoryId" class="form-control" asp-items="@(new SelectList(ViewBag.ListofCategory,"AssetCategoryId","AssetCategoryName"))"></select>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="AssetSubCategoryName">Sub Category</label>
+                            <input type="text" asp-for="AssetSubCategoryName" placeholder="Enter Asset Sub Category Name" class="form-control" autocomplete="off" />
+                            <span asp-validation-for="AssetSubCategoryName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="AssetSubCategoryDesc">Description</label>
+                            <input type="text" asp-for="AssetSubCategoryDesc" placeholder="Enter Asset Sub Category Description" class="form-control" autocomplete="off" />
+                            <span asp-validation-for="AssetSubCategoryDesc" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <button id="button" type="submit" name="submit" formmethod="post" class="btn btn-info">Save</button>
+                        </div>
+                    </form>
+                    <div class="text-lg-center">
+                        @if (ViewBag.Error != null)
+                        {
+                        <span class="alert alert-danger mt-1 text-lg-center">@ViewBag.Error</span>
+                        }
+
+                        @if (ViewBag.Success != null)
+                        {
+                        <span class="alert alert-success mt-1 text-lg-center">@ViewBag.Success</span>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    </div>
+    <div class="modal-footer">
+    </div>
+</div>
+

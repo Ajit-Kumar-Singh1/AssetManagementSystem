@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAhJWz621Rt0CJKmq4x+QsggAAAAACAAAAAAAQZgAAAAEAACAAAABckdmmpJ0A7nR6/sbNw4ouOMhjNBjD7NLchlZZvcXRyAAAAAAOgAAAAAIAACAAAABkzeNgX97zxoV0OCfKz4RWCwBbhRU1IqEe6V9MW2IxzzAAAAAEthCONDlHFUuxMi1qI6Rzl1HSF2qQVAGWYurRzxnFKTIbieSFTR8A9jgSPO7JX2JAAAAA/GnaGPVL5JeCz7pBGHjbzpM55n5c0fq3FC3A1pJIkvzVe/b7E0ZoKpFeOhinA/O5WkkjACossH14zks+VOlAVA==</EncryptedPassword>
+    <_PublishTargetUrl>ftp://win5237.site4now.net/AMS</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="appsettings.Development.json">
+      <publishTime>11/03/2022 23:11:16</publishTime>
+    </File>
+    <File Include="appsettings.json">
+      <publishTime>11/03/2022 23:11:16</publishTime>
+    </File>
+    <File Include="AssetManagementSystem.dll">
+      <publishTime>11/11/2022 22:35:52</publishTime>
+    </File>
+    <File Include="AssetManagementSystem.pdb">
+      <publishTime>11/11/2022 22:35:52</publishTime>
+    </File>
+    <File Include="AssetManagementSystem.runtimeconfig.json">
+      <publishTime>11/11/2022 22:36:03</publishTime>
+    </File>
+    <File Include="AssetManagementSystem.Views.pdb">
+      <publishTime>11/11/2022 22:35:53</publishTime>
+    </File>
+    <File Include="dotnet-aspnet-codegenerator-design.dll">
+      <publishTime>09/24/2019 19:58:14</publishTime>
+    </File>
+    <File Include="Microsoft.CodeAnalysis.CSharp.Workspaces.dll">
+      <publishTime>09/10/2022 00:00:13</publishTime>
+    </File>
+    <File Include="Microsoft.VisualStudio.Web.CodeGeneration.Contracts.dll">
+      <publishTime>09/24/2019 19:57:40</publishTime>
+    </File>
+    <File Include="Microsoft.VisualStudio.Web.CodeGeneration.Core.dll">
+      <publishTime>09/24/2019 19:57:46</publishTime>
+    </File>
+    <File Include="Microsoft.VisualStudio.Web.CodeGeneration.dll">
+      <publishTime>09/24/2019 19:57:50</publishTime>
+    </File>
+    <File Include="Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore.dll">
+      <publishTime>09/24/2019 19:57:48</publishTime>
+    </File>
+    <File Include="Microsoft.VisualStudio.Web.CodeGeneration.Templating.dll">
+      <publishTime>09/24/2019 19:57:42</publishTime>
+    </File>
+    <File Include="Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll">
+      <publishTime>09/24/2019 19:57:42</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

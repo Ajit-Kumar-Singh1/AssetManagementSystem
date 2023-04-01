@@ -1,0 +1,322 @@
+﻿
+@{
+    ViewData["Title"] = "Asset";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+<div class="modal-content mt-3">
+    <div class="modal-header">
+        <div class="col-md-8">
+            <h3 id="titleExtraBigModal" class="modal-title">Add Asset</h3>
+        </div>
+        @*<div class="col-md-pull-4 pull-right">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">X</button>
+        </div>*@
+    </div>
+    <div class="modal-body" id="ExtraBigModalDiv">
+
+        <div>
+            <div class="row">
+                <div class="col-md-12">
+
+                    <input type="hidden" data-val="true" data-val-required="The SL field is required." id="Id" name="Id" value="0">
+                    <input type="hidden" data-val="true" data-val-required="The Created Date field is required." id="CreatedDate" name="CreatedDate" value="01/01/0001 00:00:00">
+                    <input type="hidden" id="CreatedBy" name="CreatedBy" value="">
+                    <input type="hidden" data-val="true" data-val-required="The CurrentURL field is required." id="CurrentURL" name="CurrentURL" value="/Asset/Index">
+
+                    <form id="frmAsset" novalidate="novalidate">
+                        <div class="card card-primary card-outline card-tabs">
+                            <div class="card-header p-0 pt-1 border-bottom-0">
+                                <ul class="nav nav-tabs" id="custom-tabs-three-tab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="BasicInfo" data-toggle="pill" href="#divBasicInfo" role="tab" aria-controls="BasicInfo" aria-selected="true">Basic Info</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="OtherInfo" data-toggle="pill" href="#divOtherInfo" role="tab" aria-controls="OtherInfo" aria-selected="false">Other Info</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="OtherTab" data-toggle="pill" href="#divOtherTab" role="tab" aria-controls="OtherTab" aria-selected="false">Asset Assign</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="card-body">
+                                <div class="tab-content" id="tabContent">
+                                    <div class="tab-pane fade active show" id="divBasicInfo" role="tabpanel" aria-labelledby="divBasicInfo">
+                                        <div class="row">
+                                            <div class="col-6 col-sm-6">
+                                                <div class="form-group row">
+                                                    <label class="col-sm-3 col-form-label" for="AssetId">Asset Id</label>
+                                                    <div class="col-sm-5">
+                                                        <input class="form-control" id="AssetId" type="text" data-val="true" data-val-required="The Asset Id field is required." name="AssetId" value="AST-473382">
+                                                        <span class="text-danger field-validation-valid" data-valmsg-for="AssetId" data-valmsg-replace="true"></span>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <input type="button" value="Update Barcode" onclick="UpdateBarcode()" class="btn btn-sm btn-info">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-sm-3 col-form-label" for="AssetModelNo">Asset Model No</label>
+                                                    <div class="col-sm-9">
+                                                        <input class="form-control" id="AssetModelNo" type="text" data-val="true" data-val-required="The Asset Model No field is required." name="AssetModelNo" value="">
+                                                        <span class="text-danger field-validation-valid" data-valmsg-for="AssetModelNo" data-valmsg-replace="true"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-sm-3 col-form-label" for="Name">Name</label>
+                                                    <div class="col-sm-9">
+                                                        <input class="form-control" id="Name" type="text" data-val="true" data-val-required="The Name field is required." name="Name" value="">
+                                                        <span class="text-danger field-validation-valid" data-valmsg-for="Name" data-valmsg-replace="true"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-sm-3 col-form-label" for="Description">Description</label>
+                                                    <div class="col-sm-9">
+                                                        <input class="form-control" id="Description" type="text" data-val="true" data-val-required="The Description field is required." name="Description" value="">
+                                                        <span class="text-danger field-validation-valid" data-valmsg-for="Description" data-valmsg-replace="true"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-sm-3 col-form-label" for="UnitPrice">Unit Price</label>
+                                                    <div class="col-sm-9">
+                                                        <input class="form-control" id="UnitPrice" type="number" data-val="true" data-val-number="The field Unit Price must be a number." name="UnitPrice" value="">
+                                                        <span class="text-danger field-validation-valid" data-valmsg-for="UnitPrice" data-valmsg-replace="true"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-sm-3 col-form-label" for="AssetStatus">Asset Status</label>
+                                                    <div class="col-sm-9">
+                                                        <select id="AssetStatus" class="form-control" style="width:100%;" data-val="true" data-val-required="The Asset Status field is required." name="AssetStatus">
+                                                            <option value="1">New</option>
+                                                            <option value="2">In Use</option>
+                                                            <option value="3">Available</option>
+                                                            <option value="4">Damage</option>
+                                                            <option value="5">Return</option>
+                                                            <option value="6">Expired</option>
+                                                            <option value="7">Required License Update</option>
+                                                            <option value="8">Miscellaneous</option>
+                                                        </select>
+                                                        <span class="text-danger field-validation-valid" data-valmsg-for="AssetStatus" data-valmsg-replace="true"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-sm-4 col-form-label" for="DateOfPurchase">Date Of Purchase</label>
+                                                    <div class="col-sm-8">
+                                                        <input class="form-control" type="date" data-val="true" data-val-required="The Date Of Purchase field is required." id="DateOfPurchase" name="DateOfPurchase" value="2022-11-08">
+                                                        <span class="text-danger field-validation-valid" data-valmsg-for="DateOfPurchase" data-valmsg-replace="true"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-6 col-sm-6">
+                                                <div class="form-group row">
+                                                    <label class="col-sm-3 col-form-label" for="Barcode">Barcode</label>
+                                                    <div class="col-sm-9">
+                                                        <img alt="" id="Barcode" src="data:image/png;base64,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">
+                                                        <span class="text-danger field-validation-valid" data-valmsg-for="Barcode" data-valmsg-replace="true"></span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <label class="col-sm-3 col-form-label" for="Category">Category</label>
+                                                    <div class="col-sm-9">
+                                                        <select id="Category" class="form-control" style="width:100%;" data-val="true" data-val-required="The Category field is required." name="Category">
+                                                            <option disabled="" selected="">--- SELECT ---</option>
+                                                            <option value="1">IT</option>
+                                                            <option value="2">Electronics</option>
+                                                            <option value="3">Furniture</option>
+                                                            <option value="4">Miscellaneous</option>
+                                                            <option value="5">Software</option>
+                                                            <option value="6">Vivo</option>
+                                                        </select>
+                                                        <span class="text-danger field-validation-valid" data-valmsg-for="Category" data-valmsg-replace="true"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-sm-3 col-form-label" for="SubCategory">Sub Category</label>
+                                                    <div class="col-sm-9">
+                                                        <select id="SubCategory" class="form-control" style="width:100%;" data-val="true" data-val-required="The Sub Category field is required." name="SubCategory">
+                                                            <option disabled="" selected="">--- SELECT ---</option>
+                                                            <option value="1">Destop Computer</option>
+                                                            <option value="2">Laptop</option>
+                                                            <option value="4">Pendrive</option>
+                                                            <option value="5">Charger</option>
+                                                        </select>
+                                                        <span class="text-danger field-validation-valid" data-valmsg-for="SubCategory" data-valmsg-replace="true"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-sm-3 col-form-label" for="Supplier">Supplier</label>
+                                                    <div class="col-sm-9">
+                                                        <select id="Supplier" class="form-control" style="width:100%;" data-val="true" data-val-required="The Supplier field is required." name="Supplier">
+                                                            <option disabled="" selected="">--- SELECT ---</option>
+                                                            <option value="1">Common Supplier</option>
+                                                            <option value="2">Google</option>
+                                                            <option value="3">Amazon</option>
+                                                            <option value="4">Microsoft</option>
+                                                            <option value="5">PHP</option>
+                                                            <option value="6">Vivo</option>
+                                                        </select>
+                                                        <span class="text-danger field-validation-valid" data-valmsg-for="Supplier" data-valmsg-replace="true"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-sm-3 col-form-label" for="Department">Department</label>
+                                                    <div class="col-sm-9">
+                                                        <select id="Department" class="form-control" style="width:100%;" data-val="true" data-val-required="The Department field is required." name="Department">
+                                                            <option disabled="" selected="">--- SELECT ---</option>
+                                                            <option value="2">HR</option>
+                                                            <option value="4">Procurement</option>
+                                                            <option value="5">Legal</option>
+                                                            <option value="6">Vivo</option>
+                                                        </select>
+                                                        <span class="text-danger field-validation-valid" data-valmsg-for="Department" data-valmsg-replace="true"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-sm-3 col-form-label" for="SubDepartment">Sub Department</label>
+                                                    <div class="col-sm-9">
+                                                        <select id="SubDepartment" class="form-control" style="width:100%;" data-val="true" data-val-required="The Sub Department field is required." name="SubDepartment">
+                                                            <option disabled="" selected="">--- SELECT ---</option>
+                                                            <option value="1">QA</option>
+                                                            <option value="2">Software Development</option>
+                                                            <option value="3">Operation</option>
+                                                            <option value="4">PM</option>
+                                                            <option value="5">Recruitment</option>
+                                                            <option value="6">itSub1</option>
+                                                        </select>
+                                                        <span class="text-danger field-validation-valid" data-valmsg-for="SubDepartment" data-valmsg-replace="true"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="tab-pane fade" id="divOtherInfo" role="tabpanel" aria-labelledby="divOtherInfoTab">
+                                        <div class="row">
+                                            <div class="col-6 col-sm-6">
+                                                <div class="form-group row">
+                                                    <label class="col-sm-4 col-form-label" for="DateOfManufacture">Date Of Manufacture</label>
+                                                    <div class="col-sm-8">
+                                                        <input class="form-control valid" id="DateOfManufacture" type="date" data-val="true" data-val-required="The Date Of Manufacture field is required." name="DateOfManufacture" value="2022-11-08" aria-describedby="DateOfManufacture-error" aria-invalid="false">
+                                                        <span class="text-danger field-validation-valid" data-valmsg-for="DateOfManufacture" data-valmsg-replace="true"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-sm-4 col-form-label" for="YearOfValuation">Year Of Valuation</label>
+                                                    <div class="col-sm-8">
+                                                        <input class="form-control valid" id="YearOfValuation" type="date" data-val="true" data-val-required="The Year Of Valuation field is required." name="YearOfValuation" value="2022-11-08" aria-describedby="YearOfValuation-error" aria-invalid="false">
+                                                        <span class="text-danger field-validation-valid" data-valmsg-for="YearOfValuation" data-valmsg-replace="true"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-sm-4 col-form-label" for="WarranetyInMonth">Warranety In Month</label>
+                                                    <div class="col-sm-8">
+                                                        <input class="form-control" id="WarranetyInMonth" type="text" name="WarranetyInMonth" value="">
+                                                        <span class="text-danger field-validation-valid" data-valmsg-for="WarranetyInMonth" data-valmsg-replace="true"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-sm-4 col-form-label" for="DepreciationInMonth">Depreciation In Month</label>
+                                                    <div class="col-sm-8">
+                                                        <input class="form-control" id="DepreciationInMonth" type="text" name="DepreciationInMonth" value="">
+                                                        <span class="text-danger field-validation-valid" data-valmsg-for="DepreciationInMonth" data-valmsg-replace="true"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-6 col-sm-6">
+                                                <div class="form-group row">
+                                                    <label class="col-sm-3 col-form-label" for="Location">Location</label>
+                                                    <div class="col-sm-9">
+                                                        <input class="form-control" id="Location" type="text" data-val="true" data-val-required="The Location field is required." name="Location" value="">
+                                                        <span class="text-danger field-validation-valid" data-valmsg-for="Location" data-valmsg-replace="true"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-sm-3 col-form-label" for="ImageURL">Image URL</label>
+                                                    <div class="col-sm-9">
+                                                        <span class="control-fileupload">
+                                                            <label for="file">Choose a file :</label>
+                                                            <input type="file" data-val="true" data-val-required="The ImageURLDetails field is required." id="ImageURLDetails" name="ImageURLDetails">
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-sm-3 col-form-label" for="Note">Note</label>
+                                                    <div class="col-sm-9">
+                                                        <textarea class="form-control" id="Note" type="text" data-val="true" data-val-required="The Note field is required." name="Note"></textarea>
+                                                        <span class="text-danger field-validation-valid" data-valmsg-for="Note" data-valmsg-replace="true"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="tab-pane fade" id="divOtherTab" role="tabpanel" aria-labelledby="divOtherTab">
+                                        <div class="row">
+                                            <div class="col-6 col-sm-6">
+                                                <div class="form-group row">
+                                                    <label class="col-sm-4 col-form-label" for="AssignEmployeeId">Assign Employee</label>
+                                                    <div class="col-sm-8">
+                                                        <select id="AssignEmployeeId" class="form-control valid" style="width:100%;" data-val="true" data-val-required="The Assign Employee field is required." name="AssignEmployeeId" aria-describedby="AssignEmployeeId-error" aria-invalid="false">
+                                                            <option selected="" value="0">Unassigned</option>
+                                                            <option value="6">KK team</option>
+                                                            <option value="7">Test Test</option>
+                                                            <option value="8">Igho  odalo </option>
+                                                        </select>
+                                                        <span class="text-danger field-validation-valid" data-valmsg-for="AssignEmployeeId" data-valmsg-replace="true"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-6 col-sm-6">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-6">
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="button" id="btnSave" value="Save" onclick="SaveAsset()" class="btn btn-info">
+                                    <button type="button" id="btnClose" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <script src="/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+        <script>
+$('#CurrentURL').val(window.location.pathname);
+    var _AssetId = $("#AssetId").val();
+    $("#Barcode").JsBarcode(_AssetId,{
+        width: 2,
+        height: 80,
+        displayValue: true,
+        fontOptions: "",
+        //font: "monospace",
+        text: undefined,
+        textAlign: "center",
+        textPosition: "bottom",
+        textMargin: 2,
+        fontSize: 15,
+        background: "#ffffff",
+        lineColor: "#000000",
+        margin: 10,
+        marginTop: undefined,
+        marginBottom: undefined,
+        marginLeft: undefined,
+        marginRight: undefined,
+        valid: function valid() {}
+    });</script>
+    </div>
+    <div class="modal-footer">
+    </div>
+</div>
+
